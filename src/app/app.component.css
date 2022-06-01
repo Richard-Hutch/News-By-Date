@@ -1,0 +1,8 @@
+#outer-body{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(250, 250, 235);
+    min-height: 100vh;
+    min-width: 100%;
+}
