@@ -1,4 +1,11 @@
 <div id = "date-selection-div">
-    <input type="date">
-    <p>test</p>
+    <input type="date" [(ngModel)] = "selectedDate" name = "selectedDate">
+    <button type = "button" (click)="onSearch()">SEARCH</button>
+</div>
+<div id = "article-list">
+    <ul>
+        <li *ngFor="let article of articles">
+            {{article}}
+        </li>
+    </ul>
 </div>

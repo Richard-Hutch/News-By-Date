@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpServiceService} from 'src/app/http-service.service'
 
 @Component({
   selector: 'app-home-page',
@@ -6,10 +7,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
-  constructor() { }
+  selectedDate! : any;
+  articles: object[] = [];
+  constructor(private httpService: HttpServiceService) {}
 
   ngOnInit(): void {
   }
 
+//TO-DO: add http error handling and styling
+
+  onSearch(){
+    window.alert(`SUBMITTED`);
+    this.httpService.getArticles(this.selectedDate)?.subscribe(
+      (response)=>{
+        let partialResponse = response['response' as keyof Object]['docs'];
+        for (let i in partialResponse){
+          let temp = []
+          temp.push(partialResponse[i]['headline']['main']);
+          temp.push(partialResponse[i]['web_url']);
+          this.articles.push(temp);
+        }
+        console.log(this.articles);
+      },
+      (error)=>{
+        console.log("Request failed with error: " + error);
+      }
+    );
+  }
 }
