@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpServiceService} from 'src/app/http-service.service'
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
@@ -16,7 +17,8 @@ export class HomePageComponent implements OnInit {
 
 //TO-DO: add http error handling and styling
 
-  onSearch(){
+  onSearch(dateForm : any){
+    console.log(dateForm);
     window.alert(`SUBMITTED`);
     this.httpService.getArticles(this.selectedDate)?.subscribe(
       (response)=>{

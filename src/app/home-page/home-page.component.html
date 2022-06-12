@@ -1,6 +1,11 @@
 <div id = "date-selection-div">
-    <input type="date" [(ngModel)] = "selectedDate" name = "selectedDate">
-    <button type = "button" (click)="onSearch()">SEARCH</button>
+    <form #dateForm="ngForm" (ngSubmit)="dateForm.valid && onSearch(dateForm)" >
+        <input type="date" [(ngModel)] = "selectedDate" name = "selectedDate" #date = "ngModel" ngModel required>
+        <div *ngIf = "dateForm.valid && date.invalid">
+            <p>invalid field</p>
+        </div>
+        <button type = "submit" [disabled]="dateForm.invalid">SEARCH</button>
+    </form>
 </div>
 <div id = "article-list">
     <ul>
