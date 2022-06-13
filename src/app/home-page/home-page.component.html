@@ -1,5 +1,5 @@
 <div id = "date-selection-div">
-    <form #dateForm="ngForm" (ngSubmit)="dateForm.valid && onSearch(dateForm)" >
+    <form #dateForm="ngForm" (ngSubmit)="dateForm.valid && onSearchForArticles(dateForm)" >
         <input type="date" [(ngModel)] = "selectedDate" name = "selectedDate" #date = "ngModel" ngModel required>
         <div *ngIf = "dateForm.valid && date.invalid">
             <p>invalid field</p>
@@ -14,4 +14,10 @@
             <a href={{article.url}} target="_blank" rel="noopener noreferrer">{{article.headline}}</a>
         </li>
     </ol>
+</div>
+<div id = "get-picture-div">
+    <button type = "button" (click) = "onSearchForRandPic()">Get Random Picture</button>
+    <div *ngIf = "randPic">
+        <img [src]="randPic">
+    </div>
 </div>
