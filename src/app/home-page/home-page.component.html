@@ -7,10 +7,11 @@
         <button type = "submit" [disabled]="dateForm.invalid">SEARCH</button>
     </form>
 </div>
-<div id = "article-list">
-    <ul>
-        <li *ngFor="let article of articles">
-            {{article}}
+<div *ngIf = "articles.length != 0"id = "article-list">
+    <h2>{{selectedDate}}</h2>
+    <ol>
+        <li *ngFor="let article of articles; let i = index">
+            <a href={{article.url}} target="_blank" rel="noopener noreferrer">{{article.headline}}</a>
         </li>
-    </ul>
+    </ol>
 </div>
